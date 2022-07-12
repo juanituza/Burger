@@ -19,10 +19,7 @@ class Estado extends Model
 
       public function insertar()
       {
-            $sql = "INSERT INTO $this->table (
-                nombre
-                
-            ) VALUES (?);";
+            $sql = "INSERT INTO $this->table (nombre) VALUES (?);";
             $result = DB::insert($sql, [
                   $this->nombre,
 
