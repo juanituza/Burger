@@ -13,8 +13,9 @@ class ControladorProducto extends Controller
 {
     public function nuevo()
     {
-        $titulo = "Nuevo Menú";
+        $titulo = "Nuevo Producto";
         return view('producto.producto-nuevo', compact('titulo'));
             
     }
 }
+?>

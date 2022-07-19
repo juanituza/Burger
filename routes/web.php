@@ -142,5 +142,5 @@ Route::get('/admin/estado/nuevo', 'ControladorEstado@nuevo');
 /* CONTROLADOR Categorias                          */
 /* --------------------------------------------- */
 
-Route::get('/admin/categoria/nuevo', 'ControladorCategoria@nuevo');
+Route::get('/admin/categorias/nuevo', 'ControladorCategoria@nuevo');
 

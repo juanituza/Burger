@@ -13,7 +13,7 @@ class ControladorCliente extends Controller
 {
     public function nuevo()
     {
-        $titulo = "Nuevo Menú";
+        $titulo = "Nuevo Cliente";
         return view('cliente.cliente-nuevo', compact('titulo'));
             
     }

@@ -13,8 +13,9 @@ class ControladorPedido extends Controller
 {
     public function nuevo()
     {
-        $titulo = "Nuevo Menú";
+        $titulo = "Nuevo Pedido";
         return view('pedido.pedido-nuevo', compact('titulo'));
             
     }
 }
+?>

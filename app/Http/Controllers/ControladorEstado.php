@@ -13,7 +13,7 @@ class ControladorEstado extends Controller
 {
     public function nuevo()
     {
-        $titulo = "Nuevo Menú";
+        $titulo = "Nuevo Estado";
         return view('estado.estado-nuevo', compact('titulo'));
             
     }
