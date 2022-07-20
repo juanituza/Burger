@@ -28,5 +28,39 @@ function fsalir(){
 </script>
 @endsection
 @section('contenido')
-      aca va el contenido
+<?php
+if (isset($msg)) {
+    echo '<div id = "msg"></div>';
+    echo '<script>msgShow("' . $msg["MSG"] . '", "' . $msg["ESTADO"] . '")</script>';
+}
+?>
+<div class="panel-body">
+        <div id = "msg"></div>
+        <?php
+if (isset($msg)) {
+    echo '<script>msgShow("' . $msg["MSG"] . '", "' . $msg["ESTADO"] . '")</script>';
+}
+?>
+            <form id="form1" method="POST">
+                <div class="row">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
+                    <input type="hidden" id="id" name="id" class="form-control" value="{{$globalId}}" required>
+                    <div class="form-group col-lg-6">
+                        <label>Nombre: *</label>
+                        <input type="text" id="txtNombre" name="txtNombre" class="form-control shadow" value="" required>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>Domicilio: *</label>
+                        <input type="text" id="txtDomicilio" name="txtDomicilio" class="form-control shadow" value="" required>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>Teléfono:</label>
+                        <input type="text" id="txtTelefono" name="txtTelefono" class="form-control shadow" value="">
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>Link Mapa:</label>
+                        <input type="text" id="txtLinkMapa" name="txtLinkMapa" class="form-control shadow" value="">
+                    </div>
+                </div>
+            </form>
 @endsection

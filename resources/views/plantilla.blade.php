@@ -140,7 +140,7 @@
         <footer class="sticky-footer">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>{{ env('APP_NAME') }} - {{ env('ORG_NAME') }}</span>
+              <span>{{ env('APP_NAME') }}  {{ env('ORG_NAME') }}</span>
             </div>
           </div>
         </footer>

@@ -12,7 +12,7 @@ class Productos extends Model
       public $timestamps = false;
 
       protected $fillable = [
-            'idproducto', 'nombre', 'descripion', 'imagen', 'precio'
+            'idproducto', 'nombre', 'descripcion', 'imagen', 'precio'
       ];
 
       protected $hidden = [];
@@ -21,14 +21,14 @@ class Productos extends Model
       {
             $sql = "INSERT INTO $this->table (
                 nombre,
-                descripion,
+                descripcion,
                 imagen,
                 precio
                 
             ) VALUES (?, ?, ?, ?);";
             $result = DB::insert($sql, [
                   $this->nombre,
-                  $this->descripion,
+                  $this->descripcion,
                   $this->imagen,
                   $this->precio,
             ]);
@@ -38,7 +38,7 @@ class Productos extends Model
       {
             $sql = "UPDATE $this->table SET
             nombre='$this->nombre',
-            descripion='$this->descripion',
+            descripcion='$this->descripcion',
             imagen='$this->imagen',
             precio=$this->precio
 
@@ -56,7 +56,7 @@ class Productos extends Model
             $sql = "SELECT
                   A.idproducto,
                   A.nombre,
-                  A.descripion,
+                  A.descripcion,
                   A.imagen,
                   A.precio               
 
@@ -69,7 +69,7 @@ class Productos extends Model
             $sql = "SELECT
                 idproducto,
                 nombre,
-                descripion,
+                descripcion,
                 imagen,
                 precio
 

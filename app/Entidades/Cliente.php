@@ -17,6 +17,17 @@ class Cliente extends Model
 
       protected $hidden = [];
 
+      public function cargarDesdeRequest($request)
+      {
+            $this->idcliente = $request->input('id') != "0" ? $request->input('id') : $this->idcliente;
+            $this->nombre = $request->input('txtNombre');
+            $this->apellido = $request->input('txtApellido');
+            $this->telefono = $request->input('txtTelefono');
+            $this->correo = $request->input('txtCorreo');
+            $this->clave = $request->input('txtClave');
+            $this->dni = $request->input('txtDni');
+      }
+
       public function insertar()
       {
             $sql = "INSERT INTO $this->table (
@@ -98,7 +109,7 @@ class Cliente extends Model
                   $this->correo = $lstRetorno[0]->correo;
                   $this->clave = $lstRetorno[0]->clave;
                   $this->dni = $lstRetorno[0]->dni;
-                  
+
                   return $this;
             }
             return null;
