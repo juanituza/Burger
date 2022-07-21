@@ -12,7 +12,7 @@ class Cliente extends Model
       public $timestamps = false;
 
       protected $fillable = [
-            'idcliente', 'nombre', 'apellido', 'telefono', 'correo', 'clave', 'dni'
+            'idcliente', 'nombre', 'apellido', 'telefono', 'dni', 'correo', 'clave', 
       ];
 
       protected $hidden = [];
@@ -22,10 +22,10 @@ class Cliente extends Model
             $this->idcliente = $request->input('id') != "0" ? $request->input('id') : $this->idcliente;
             $this->nombre = $request->input('txtNombre');
             $this->apellido = $request->input('txtApellido');
+            $this->dni = $request->input('txtDni');
             $this->telefono = $request->input('txtTelefono');
             $this->correo = $request->input('txtCorreo');
             $this->clave = $request->input('txtClave');
-            $this->dni = $request->input('txtDni');
       }
 
       public function insertar()
@@ -34,30 +34,29 @@ class Cliente extends Model
                 nombre,
                 apellido,
                 telefono,
+                dni,
                 correo,
-                clave,
-                dni
+                clave
             ) VALUES (?, ?, ?, ?, ?, ?);";
             $result = DB::insert($sql, [
                   $this->nombre,
                   $this->apellido,
                   $this->telefono,
+                  $this->dni,
                   $this->correo,
                   $this->clave,
-                  $this->dni,
             ]);
             return $this->idcliente = DB::getPdo()->lastInsertId();
       }
 
-      public function guardar()
-      {
-            $sql = "UPDATE $this->table SET
-            nombre='$this->nombre',
-            apellido='$this->apellido',
-            telefono='$this->telefono',
-            correo='$this->correo',
-            clave='$this->clave',
-            dni='$this->dni'
+      public function guardar(){
+            $sql = "UPDATE clientes SET
+                  nombre='$this->nombre',
+                  apellido='$this->apellido',
+                  telefono='$this->telefono',
+                  dni='$this->dni',
+                  correo='$this->correo',
+                  clave='$this->clave'
             WHERE idcliente=?";
             $affected = DB::update($sql, [$this->idcliente]);
       }
@@ -77,10 +76,10 @@ class Cliente extends Model
                   A.idcliente,
                   A.nombre,
                   A.apellido,
+                  A.dni,                
                   A.telefono,
                   A.correo,
-                  A.clave,
-                  A.dni                
+                  A.clave
 
                 FROM $this->table A ORDER BY A.nombre";
             $lstRetorno = DB::select($sql);
@@ -94,10 +93,10 @@ class Cliente extends Model
                 idcliente,
                 nombre,
                 apellido,
+                dni,
                 telefono,
                 correo,
-                clave,
-                dni
+                clave
                 FROM $this->table WHERE idcliente = $idliente";
             $lstRetorno = DB::select($sql);
 
@@ -105,10 +104,10 @@ class Cliente extends Model
                   $this->idcliente = $lstRetorno[0]->idcliente;
                   $this->nombre = $lstRetorno[0]->nombre;
                   $this->apellido = $lstRetorno[0]->apellido;
+                  $this->dni = $lstRetorno[0]->dni;
                   $this->telefono = $lstRetorno[0]->telefono;
                   $this->correo = $lstRetorno[0]->correo;
                   $this->clave = $lstRetorno[0]->clave;
-                  $this->dni = $lstRetorno[0]->dni;
 
                   return $this;
             }
